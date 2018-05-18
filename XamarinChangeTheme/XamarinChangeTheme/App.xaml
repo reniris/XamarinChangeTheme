@@ -2,7 +2,24 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamarinChangeTheme.App">
-	<Application.Resources>
-    
-	</Application.Resources>
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="View/Themes/DarkTheme.xaml" />
+
+                <ResourceDictionary>
+                    <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+                        <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}" />
+                    </Style>
+
+                    <Style TargetType="Label">
+                        <Setter Property="TextColor" Value="{DynamicResource ForegroundColor}"/>
+                    </Style>
+                    <Style TargetType="Picker">
+                        <Setter Property="TextColor" Value="{DynamicResource ForegroundColor}"/>
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>            
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

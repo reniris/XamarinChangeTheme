@@ -2,13 +2,21 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:XamarinChangeTheme"
+             xmlns:c="clr-namespace:XamarinChangeTheme.View.Converter"
+             xmlns:vm="clr-namespace:XamarinChangeTheme.ViewModel"
              x:Class="XamarinChangeTheme.View.MainPage">
-
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <c:IntEnumConverter x:Key="IntEnum"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <vm:MainViewModel/>
+    </ContentPage.BindingContext>
+    
     <StackLayout>
-        <!-- Place new controls here -->
-    	<Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <Label Text="Change Dynamic Theme" HorizontalTextAlignment="Center"/>
+        <Picker ItemsSource="{Binding Themes}" SelectedIndex="{Binding SelectedTheme, Converter={StaticResource IntEnum}, Mode=TwoWay}" VerticalOptions="End" HorizontalOptions="CenterAndExpand"/>
     </StackLayout>
 
 </ContentPage>
